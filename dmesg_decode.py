@@ -66,7 +66,7 @@ with open(infile, "rb") as f:
             message2
             )
 
-        print(' [%09.4f] %s %s' % (new_entry.ts_nsec/1000000000, message, (('/* %s */' % message2) if len(message2) > 4 else '')))
+        print((' [%09.4f] %s' % (new_entry.ts_nsec/1000000000, message)).ljust(80) + ( (' | ' + message2) if len(message2) > 4 else ''))
 
         offset = offset + new_entry.len
 
