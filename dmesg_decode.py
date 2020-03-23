@@ -69,7 +69,12 @@ with open(infile, "rb") as f:
         if ( new_entry.len == 0 ):
             quit("Found zero-length entry, quitting...")
 
-        print((' [%09.4f] %s' % (new_entry.ts_nsec/1000000000, message)).ljust(80) + ( (' | ' + message2) if len(message2) > 4 else ''))
+        msg = ('[%12.6f] %s' % (new_entry.ts_nsec/1000000000, message))
+
+        if (len(message2) > 4):
+            print(msg.ljust(80) + ' | ' + message2)
+        else:
+            print(msg)
 
         offset = offset + new_entry.len
 
